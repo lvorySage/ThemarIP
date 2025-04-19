@@ -1,0 +1,98 @@
+
+
+- Goal	Tool/Strategy	Notes
+Authentication	OAuth 2.0 + OpenID Connect	should be in your architecture
+Token Handling	JWT (signed w/ HS256 or RS256)	Short TTL + refresh token strategy
+Rate Limiting	Express-rate-limit / Istio	Prevent abuse from scraping or brute force
+IP Filtering	NGINX / Envoy	Allowlist trusted gateways (e.g., partner banks)
+Logging (API usage)	Winston (Node), Logback (Java), or ELK Stack	Log user ID, endpoint hit, status, latency, errors
+Anomaly detection logs	SIEM (e.g., Wazuh, Splunk) integration	Use same pipeline as your fraud detection engine
+Input Validation	Joi (Node.js), Marshmallow (Python), Hibernate	Ensure format, types, and content are secure
+Upload Sanitization	ClamAV (optional)	Scan uploaded documents for malware (optional)
+
+
+
+
+
+
+
+action/info list :
+
+
+Language	Dart
+Framework	shelf + shelf_router (simple and scalable)
+Auth	dart_jsonwebtoken, OAuth2 (manual or via 3rd party)
+DB	PostgreSQL (via postgres package)
+Deployment	Docker + NGINX + at home sadly 
+API Docs	OpenAPI YAML + Redoc UI (optional)
+Logging	Use shelf_logger, and optionally forward logs to ELK/Splunk/onionsec
+Security	TLS (HTTPS), JWT, input validation, rate limits via NGINX
+
+
+
+
+
+📱 Frontend (Client App)
+Part	Tech Stack
+Language/Framework	Flutter (same Dart ecosystem)
+API Client	http, provider, or riverpod for state mgmt
+Auth	Store tokens using shared_preferences
+Testing	flutter_test, mockito, integration_test
+Deployment	Play Store / App Store, or Web (Flutter Web)
+
+
+
+
+project structure : 
+themarip_backend/
+├── bin/
+│   └── server.dart         ← entry point
+├── lib/
+│   ├── services/           ← DB queries, logic
+│   ├── models/             ← Dart objects
+│   ├── controllers/        ← API route handlers
+│   └── utils/              ← JWT, auth, validators
+├── .env                    ← credentials
+└── pubspec.yaml
+
+
+
+Use Docker to containerize the app
+
+NGINX reverse proxy with TLS (HTTPS)
+
+Store .env for secrets
+
+Add fail2ban or ufw for protection
+
+
+
+
+flutter_shit: 
+
+flutter create themarip_client && cd themarip_client
+
+Update pubspec.yaml:
+
+dependencies:
+  http: ^0.13.6
+  provider: ^6.0.5
+  shared_preferences: ^2.2.0
+
+Create:
+
+    lib/services/kys_api.dart — for HTTP
+
+    lib/models/ — request/response models
+
+    lib/screens/kys_screen.dart — onboarding form
+
+    Use provider for state mgmt or riverpod if you prefer
+
+🧪 Final Notes
+
+    Add test coverage using test (Dart) and flutter_test
+
+    CI/CD: Use GitHub Actions for both backend & mobile pipeline
+
+    Consider ArgoCD if you're going Kubernetes later
