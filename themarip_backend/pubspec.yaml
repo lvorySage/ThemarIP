@@ -1,0 +1,22 @@
+name: themarip_mobile
+description: Themar IP Flutter mobile client
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.18.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # HTTP calls
+  http: ^0.13.6
+  # Environment variables
+  flutter_dotenv: ^5.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true

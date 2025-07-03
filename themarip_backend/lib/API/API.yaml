@@ -1,0 +1,57 @@
+openapi: 3.0.3
+info:
+  title: Themar KYS API
+  description: Know Your Subscriber API for onboarding, risk profiling, and consent
+  version: 1.0.0
+servers:
+  - url: https://api.themarip.com
+paths:
+  /kys/risk-profile:
+    post:
+      summary: Submit KYS risk profiling answers
+      tags:
+        - Risk Profiling
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RiskProfileRequest'
+      responses:
+        '200':
+          description: Risk profile stored
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskProfileResponse'
+        '400':
+          description: Bad request
+components:
+  schemas:
+    RiskProfileRequest:
+      type: object
+      required:
+        - userId
+        - answers
+      properties:
+        userId:
+          type: string
+          format: uuid
+        answers:
+          type: array
+          items:
+            type: object
+            properties:
+              questionId:
+                type: string
+              answer:
+                type: string
+    RiskProfileResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        riskLevel:
+          type: string
+          example: low
