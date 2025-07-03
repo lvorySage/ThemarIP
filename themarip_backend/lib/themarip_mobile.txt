@@ -32,7 +32,7 @@ Security	TLS (HTTPS), JWT, input validation, rate limits via NGINX
 
 
 
-📱 Frontend (Client App)
+ Frontend (Client App)
 Part	Tech Stack
 Language/Framework	Flutter (same Dart ecosystem)
 API Client	http, provider, or riverpod for state mgmt
@@ -89,7 +89,7 @@ Create:
 
     Use provider for state mgmt or riverpod if you prefer
 
-🧪 Final Notes
+Final Notes
 
     Add test coverage using test (Dart) and flutter_test
 

@@ -1,2 +1,11 @@
-A sample command-line application with an entrypoint in `bin/`, library code
-in `lib/`, and example unit test in `test/`.
+dear collabs, 
+
+
+make sure to install dart to start workinfg with the project 
+
+sudo apt install dart
+dart pub get
+dart run bin/server.dart
+
+
+
