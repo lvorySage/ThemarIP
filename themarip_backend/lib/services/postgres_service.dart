@@ -14,7 +14,7 @@ class PostgresService {
     );
 
     await connection.open();
-    print('📡 PostgreSQL connected successfully!');
+    print('📡 PostgreSQL connected successfully!'); // excuse me for the silly emojies lmao
   }
 
   Future<void> close() async {
