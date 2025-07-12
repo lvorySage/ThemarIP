@@ -3,7 +3,7 @@ import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart' as io;
 import 'package:shelf_router/shelf_router.dart';
 import 'package:shelf_cors_headers/shelf_cors_headers.dart';
-import '../lib/services/postgres_service.dart'; // ✅
+import '../lib/services/postgres_service.dart';
 
 void main() async {
   final db = PostgresService(); // ✅
@@ -14,7 +14,7 @@ void main() async {
   router.post('/kys/risk-profile', (Request req) async {
     final body = await req.readAsString();
     print('Received Risk Profile: $body');
-    // TODO: Save to DB
+
     return Response.ok('{"status":"success"}',
         headers: {'Content-Type': 'application/json'});
   });
@@ -22,7 +22,7 @@ void main() async {
   router.post('/signup', (Request req) async {
     final body = await req.readAsString();
     print('Signup request received: $body');
-    // TODO: Save to DB
+
     return Response.ok('{"status":"signed_up"}',
         headers: {'Content-Type': 'application/json'});
   });
