@@ -5,11 +5,11 @@ class PostgresService {
 
   Future<void> connect() async {
     connection = PostgreSQLConnection(
-      'themar-db.postgres.database.azure.com', // Azure PostgreSQL FQDN
+      'themar-db.postgres.database.azure.com',
       5432,
-      'themarip_db', // your DB name
-      username: 'themaradmin@themar-db', // full username required by Azure
-      password: 'ThemarIP_DB$$$66', // change this securely
+      'themarip_db',
+      username: 'Plaguo@themar-db',
+      password: r'Th96116119$$$666',
       useSSL: true,
     );
 
