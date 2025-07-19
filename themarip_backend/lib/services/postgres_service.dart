@@ -4,7 +4,7 @@ void main() async {
   final conn = PostgreSQLConnection(
     'themardb.postgres.database.azure.com',
     5432,
-    'postgres', // test if this DB actually exists
+    'postgres',
     username: 'plaguo@themardb',
     password: 'Th96116119',
     useSSL: true,

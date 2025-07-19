@@ -5,7 +5,7 @@ void main() async {
     'themardb.postgres.database.azure.com',
     5432,
     'postgres',
-    username: 'Plaguo@themardb',
+    username: 'plaguo',
     password: 'Th96116119',
     useSSL: true,
   );
