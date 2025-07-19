@@ -2,11 +2,11 @@ import 'package:postgres/postgres.dart';
 
 void main() async {
   final conn = PostgreSQLConnection(
-    'themardb.postgres.database.azure.com', //  hostname (no dash)
+    'themardb.postgres.database.azure.com',
     5432,
-    'themarip_db',
-    username: 'Plaguo@themardb', // FIBNALLYYY FIXED username domain to match hostname
-    password: 'Th96116119\$\$\$666', // edcaped  correctly if needed
+    'postgres',
+    username: 'Plaguo@themardb',
+    password: 'Th96116119',
     useSSL: true,
   );
 

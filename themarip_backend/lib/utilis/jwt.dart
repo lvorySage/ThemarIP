@@ -1,26 +1,19 @@
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
+import '../../config/env.dart';
 
-const _jwtSecret = 'thEmaR_IP$$^^666'; // Change this to something secure and store it in env
+final _jwtSecret = env['JWT_SECRET']!;
 
 class JwtUtils {
-  /// generates a JWT token for a user with given claims
   static String generateToken({
     required String userId,
     String role = 'user',
     Duration expiry = const Duration(hours: 1),
   }) {
-    final jwt = JWT(
-      {
-        'userId': userId,
-        'role': role,
-      },
-      issuer: 'themarip.com',
-    );
+    final jwt = JWT({'userId': userId, 'role': role}, issuer: 'themarip.com');
 
     return jwt.sign(SecretKey(_jwtSecret), expiresIn: expiry);
   }
 
-  /// verifies a jfwt token and returns the decoded payload
   static Map<String, dynamic> verifyToken(String token) {
     try {
       final jwt = JWT.verify(token, SecretKey(_jwtSecret));
@@ -32,4 +25,3 @@ class JwtUtils {
     }
   }
 }
-``

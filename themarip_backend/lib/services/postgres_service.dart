@@ -1,24 +1,32 @@
 import 'package:postgres/postgres.dart';
 
-class PostgresService {
-  late PostgreSQLConnection connection;
+void main() async {
+  final conn = PostgreSQLConnection(
+    'themardb.postgres.database.azure.com',
+    5432,
+    'postgres', // test if this DB actually exists
+    username: 'plaguo@themardb',
+    password: 'Th96116119',
+    useSSL: true,
+  );
 
-  Future<void> connect() async {
-    connection = PostgreSQLConnection(
-      'themar-db.postgres.database.azure.com',
-      5432,
-      'themarip_db',
-      username: 'Plaguo@themar-db',
-      password: r'Th96116119$$$666',
-      useSSL: true,
-    );
+  try {
+    await conn.open();
+    print('✅ Connected successfully to Azure PostgreSQL');
 
-    await connection.open();
-    print('📡 PostgreSQL connected successfully!'); // excuse me for the silly emojies lmao
-  }
+    // sample: Create table if needed willl be changed later
+    await conn.query('''
+      CREATE TABLE IF NOT EXISTS risk_profiles (
+        id SERIAL PRIMARY KEY,
+        user_id TEXT NOT NULL,
+        answers TEXT
+      );
+    ''');
 
-  Future<void> close() async {
-    await connection.close();
-    print('🔌 PostgreSQL connection closed.');
+    print('📦 Table check/creation complete.');
+
+    await conn.close();
+  } catch (e) {
+    print('❌ Connection failed: $e');
   }
 }
